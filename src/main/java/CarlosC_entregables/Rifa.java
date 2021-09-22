@@ -18,7 +18,9 @@ public class Rifa {
     int carton[] = new int[5];
 
     ArrayList<Rifa> baseDatos = new ArrayList<Rifa>();
-
+    int cartonGanador[] = new int[5];
+    int aciertosJugador;
+    int aciertosTotales = 0;
     public Rifa() {
     }
 
@@ -50,11 +52,15 @@ public class Rifa {
                     break;
                 case 2:
                     GenerarPremiados();
+                    for (int aux : cartonGanador) {
+                        System.out.println(aux);
+                    }
                     ContarAciertos();
                     RepartirPremios();
                     break;
             }
         } while (opcion != 2);
+        System.out.println("\nHasta pronto compañer@!!!");
     }
 
     public void AñadirJugador() {
@@ -69,13 +75,24 @@ public class Rifa {
     }
 
     public void GenerarPremiados() {
-
+        for (int i = 0; i < cartonGanador.length; i++) {
+            cartonGanador[i] = (int) (Math.random() * 25 + 1);
+        }
     }
 
     public void ContarAciertos() {
-
+        for(Rifa aux : baseDatos){
+            for (int i = 0; i < aux.carton.length; i++) {
+                for (int j = 0; j < cartonGanador.length; j++) {
+                    if(aux.carton[i] == cartonGanador[j]){
+                        aux.aciertosJugador++;
+                        aciertosTotales++;
+                    }
+                }
+            }
+        }
     }
-
+//
     public void RepartirPremios() {
 
     }
