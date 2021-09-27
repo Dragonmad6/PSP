@@ -19,7 +19,8 @@ public class Menu {
         Scanner ScannerInt = new Scanner(System.in);
         Scanner ScannerString = new Scanner(System.in);
 
-        Rifa rifa = new Rifa("Mario");
+        Rifa rifa = new Rifa();
+        Aventura aventura = new Aventura();
 //        System.out.println("Nombre: " + rifa.nombre);
 //        for (int i = 0; i < 5; i++) {
 //            System.out.println(rifa.carton[i] + " ");
@@ -45,6 +46,7 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("Has escogido la opción 2.");
+                    aventura.IniciarAventura();
                     break;
                 default:
                     System.out.println("Opcion incorrecta, elija de nuevo.");

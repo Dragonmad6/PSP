@@ -16,78 +16,27 @@ public class Personaje {
     String especie;
     String arma;
     
-    int fuerza;
-    int fortaleza;
-    int conocimiento;
-    int agilidad;
+    int fuerza, destreza, constitucion;
+    int carisma, manipulacion, compostura;
+    int inteligencia, astucia, aplomo;
+    int vida;
 
      public Personaje() {
     }
-    
-    public Personaje(String nombre, String especie, String arma, int fuerza, int fortaleza, int conocimiento, int agilidad) {
+
+    public Personaje(String nombre, String especie, String arma, int fuerza, int destreza, int constitucion, int carisma, int manipulacion, int compostura, int inteligencia, int astucia, int aplomo, int vida) {
         this.nombre = nombre;
         this.especie = especie;
         this.arma = arma;
         this.fuerza = fuerza;
-        this.fortaleza = fortaleza;
-        this.conocimiento = conocimiento;
-        this.agilidad = agilidad;
+        this.destreza = destreza;
+        this.constitucion = constitucion;
+        this.carisma = carisma;
+        this.manipulacion = manipulacion;
+        this.compostura = compostura;
+        this.inteligencia = inteligencia;
+        this.astucia = astucia;
+        this.aplomo = aplomo;
+        this.vida = 5 + constitucion;
     }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
-
-    public String getArma() {
-        return arma;
-    }
-
-    public void setArma(String arma) {
-        this.arma = arma;
-    }
-
-    public int getFuerza() {
-        return fuerza;
-    }
-
-    public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
-    }
-
-    public int getFortaleza() {
-        return fortaleza;
-    }
-
-    public void setFortaleza(int fortaleza) {
-        this.fortaleza = fortaleza;
-    }
-
-    public int getConocimiento() {
-        return conocimiento;
-    }
-
-    public void setConocimiento(int conocimiento) {
-        this.conocimiento = conocimiento;
-    }
-
-    public int getAgilidad() {
-        return agilidad;
-    }
-
-    public void setAgilidad(int agilidad) {
-        this.agilidad = agilidad;
-    }
-       
 }
