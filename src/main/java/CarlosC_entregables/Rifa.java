@@ -14,86 +14,106 @@ import java.util.Scanner;
  */
 public class Rifa {
 
-    String nombre;
+     String nombre;
     int carton[] = new int[5];
+    int cartonGanador[] = new int[5];
 
     ArrayList<Rifa> baseDatos = new ArrayList<Rifa>();
-    int cartonGanador[] = new int[5];
-    int aciertosJugador;
-    int aciertosTotales = 0;
+
     public Rifa() {
     }
 
     public Rifa(String nombre) {
         this.nombre = nombre;
         for (int i = 0; i < carton.length; i++) {
-            carton[i] = (int) (Math.random() * 25 + 1);
+            carton[i] = (int) (Math.random() * 100 + 1);
         }
     }
 
-    //.
     public void IniciarRifa() {
-        int opcion;
-        do {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Elige una opcion:\n");
-            System.out.println("1. Añadir jugador");
-            System.out.println("2. Empezar partida");
-            //Solo es necesario un Scanner
-            opcion = Integer.parseInt(sc.nextLine());
+        int opcionRifa;
+        Scanner ScannerInt = new Scanner(System.in);
 
-            switch (opcion) {
+        do {
+            System.out.println(
+                    "\nPulsa:\n\t1. Añadir Jugador."
+                    + "\n\t2. Empezar Rifa.");
+            System.out.printf("Escribe un número del menú: ");
+            opcionRifa = ScannerInt.nextInt();
+            switch (opcionRifa) {
                 case 1:
                     AñadirJugador();
-                    System.out.println("Nombre: " + baseDatos.get(0).nombre);
-                    for (int i = 0; i < baseDatos.get(0).carton.length; i++) {
-                        System.out.println(baseDatos.get(0).carton[i] + "");
+                    
+                    for (int i = 0; i < baseDatos.size(); i++) {
+                        System.out.println("\nNombre: " + baseDatos.get(i).nombre);
+                        for (int j = 0; j < baseDatos.get(i).carton.length; j++) {
+                             System.out.print(baseDatos.get(i).carton[j] + " ");
+                        }
                     }
+                    System.out.println("\n");
                     break;
                 case 2:
                     GenerarPremiados();
-                    for (int aux : cartonGanador) {
-                        System.out.println(aux);
-                    }
                     ContarAciertos();
-                    RepartirPremios();
+                    System.out.print("\nCARTÓN GANADOR: ");
+                    for (int i = 0; i < cartonGanador.length; i++) {
+                        System.out.print(cartonGanador[i] + " ");
+                    }
+                    RepartirPremio(ContarAciertos());
+
+                    break;
+                default:
+                    System.out.println("Opcion icorrecta, lea atentamente.");
                     break;
             }
-        } while (opcion != 2);
-        System.out.println("\nHasta pronto compañer@!!!");
+        } while (opcionRifa != 2);
     }
 
     public void AñadirJugador() {
-        Scanner sc = new Scanner(System.in);
-        String nombreAuxiliar;
+        Scanner ScannerString = new Scanner(System.in);
 
-        System.out.println("Como te llamas?");
-        nombreAuxiliar = sc.nextLine();
+        System.out.println("\nComo te llamas?");
+        String nombreAuxiliar = ScannerString.nextLine();
 
+        //        Rifa jugador = new Rifa(nombreAuxiliar);
         baseDatos.add(new Rifa(nombreAuxiliar));
-
     }
 
     public void GenerarPremiados() {
         for (int i = 0; i < cartonGanador.length; i++) {
-            cartonGanador[i] = (int) (Math.random() * 25 + 1);
+            cartonGanador[i] = (int) (Math.random() * 100 + 1);
         }
     }
 
-    public void ContarAciertos() {
-        for(Rifa aux : baseDatos){
-            for (int i = 0; i < aux.carton.length; i++) {
-                for (int j = 0; j < cartonGanador.length; j++) {
-                    if(aux.carton[i] == cartonGanador[j]){
-                        aux.aciertosJugador++;
-                        aciertosTotales++;
+    //DUPLICACION DE CODIGO.
+    public int ContarAciertos() {
+        int cont = 0;
+        for (int i = 0; i < baseDatos.size(); i++) {
+            for (int j = 0; j < cartonGanador.length; j++) {
+                for (int k = 0; k < 5; k++) {
+                    if (baseDatos.get(i).carton[k] == cartonGanador[j]) {
+                        cont++;
                     }
                 }
             }
         }
+        return cont;
     }
-//
-    public void RepartirPremios() {
 
+    public void RepartirPremio(int totales) {
+        int cont = 0;
+        for (int i = 0; i < baseDatos.size(); i++) {
+            for (int j = 0; j < cartonGanador.length; j++) {
+                for (int k = 0; k < 5; k++) {
+                    if (baseDatos.get(i).carton[k] == cartonGanador[j]) {
+                        cont++;
+                    }
+                }
+            }
+            if (cont != 0) {
+                System.out.println("Ganador: " + baseDatos.get(i).nombre + " Premio: " + ((cont * (baseDatos.size() * 10)) / totales) + "€");
+                cont = 0;
+            }
+        }
     }
 }

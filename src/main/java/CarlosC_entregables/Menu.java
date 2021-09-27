@@ -15,47 +15,41 @@ public class Menu {
     
     public static void main(String[] args){
         
-        //Scanner
-        Scanner sc = new Scanner(System.in);
-        Rifa rifa = new Rifa("Carlos");
-        
-        //Comprobacion de metodo
-//        System.out.println("Nombre:" +rifa.nombre);
-//        for(int i=0; i<5; i++){
-//            System.out.println(rifa.carton[i]+"");
+        // TODO code application logic here.
+        Scanner ScannerInt = new Scanner(System.in);
+        Scanner ScannerString = new Scanner(System.in);
+
+        Rifa rifa = new Rifa("Mario");
+//        System.out.println("Nombre: " + rifa.nombre);
+//        for (int i = 0; i < 5; i++) {
+//            System.out.println(rifa.carton[i] + " ");
 //        }
-        //Variables
+
         int opcion;
-        
-        //Presentacion
-        System.out.println("Bienvenido, por favor eliga la modalidad de juego que desea participar.\n");
-        
-        do{
-            //Seleccionar el juego
-            System.out.println("Selecciona una opcion.");
-                System.out.println("1. Jugar | La rifa |");
-                System.out.println("2. Jugar | Aventura |");
-                System.out.println("3. Salir.\n");
-            
-            //Solo es necesario un Scanner
-            opcion = Integer.parseInt(sc.nextLine());
-                    
-            switch(opcion){
-             //Opciones del menu
+
+        do {
+            System.out.println(
+                    "Pulsa:\n\t1. Juego de Rifa."
+                    + "\n\t2. Juego de Aventura."
+                    + "\n\t0. Salir.");
+            System.out.printf("Escribe un número del menú: ");
+            opcion = ScannerInt.nextInt();
+            switch (opcion) {
+                case 0:
+                    System.out.println("Has escogido la opción 0.");
+                    System.exit(opcion);
+                    break;
                 case 1:
-                    System.out.println("¡Qué empiece el juego!");
+                    System.out.println("Has escogido la opción 1.");
                     rifa.IniciarRifa();
                     break;
                 case 2:
-                    System.out.println("¡Qué empiece el juego!");
-                    break;
-                case 3:
+                    System.out.println("Has escogido la opción 2.");
                     break;
                 default:
-                    System.out.println("Opcion no aceptada seleccione de nuevo.");
+                    System.out.println("Opcion incorrecta, elija de nuevo.");
                     break;
-        }
-        }while(opcion != 3);
-        System.out.println("GAME OVER");
+            }
+        } while (opcion != 0);
     }
 }
