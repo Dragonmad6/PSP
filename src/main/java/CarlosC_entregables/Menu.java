@@ -15,7 +15,7 @@ public class Menu {
     
     public static void main(String[] args){
         
-        // TODO code application logic here.
+        // TODO code application logic here..
         Scanner ScannerInt = new Scanner(System.in);
         Scanner ScannerString = new Scanner(System.in);
 
