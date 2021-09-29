@@ -18,7 +18,7 @@ public class Aventura {
     Personaje ninfa = new Personaje("Mercedes", "ninfa", "baston", 3, 2, 4, 3, 0, 2, 3, 2, 1, 3);
     Personaje botones = new Personaje("Bob", "minotauro", "baston", 4, 3, 1, 2, 1, 1, 2, 1, 3, 2);
     
-    Personaje[] grupo = new Personaje[4];
+    Personaje[] grupo = new Personaje[3];
     Prueba foso = new Prueba("Foso", 2, 3);
     
     
@@ -28,6 +28,8 @@ public class Aventura {
     public void IniciarAventura() {
 
         Introduccion();
+        CrearProta();
+        CrearGrupo();
         SaltarFoso();
         PeleaAMuerte(prota,ninfa);
         
@@ -96,7 +98,7 @@ public class Aventura {
     }
 
     public void Introduccion() {
-        System.out.println("Bienvenido al mundo de Elgyon.");
+        System.out.println("Bienvenido al mundo de Elgyon invocador, en esta tierra en la que reina el terror por culpa de una");
         System.out.println("Elgyon es la tierra de ");
     }
 
