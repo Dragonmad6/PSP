@@ -155,7 +155,7 @@ public class Aventura {
             System.out.println("\n 'Le ayuda a levantarse.'");
         }else{
             System.out.println("Levanta insecto no eres rival para mí.");
-            System.out.println("\n" + ninfa.nombre + "se acerca a " + escarabajo.nombre + " y lo cura");
+            System.out.println("\n" + ninfa.nombre + " se acerca a " + escarabajo.nombre + " y lo cura");
             escarabajo.vida = escarabajo.vida + 1;
         }
     }
