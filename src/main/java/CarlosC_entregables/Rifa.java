@@ -18,7 +18,7 @@ public class Rifa {
     int carton[] = new int[5];
     int cartonGanador[] = new int[5];
 
-    ArrayList<Rifa> baseDatos = new ArrayList<Rifa>();
+    ArrayList<Rifa> GuardarDatos = new ArrayList<Rifa>();
 
     public Rifa() {
     }
@@ -44,10 +44,10 @@ public class Rifa {
                 case 1:
                     AñadirJugador();
                     
-                    for (int i = 0; i < baseDatos.size(); i++) {
-                        System.out.println("\nNombre: " + baseDatos.get(i).nombre);
-                        for (int j = 0; j < baseDatos.get(i).carton.length; j++) {
-                             System.out.print(baseDatos.get(i).carton[j] + " ");
+                    for (int i = 0; i < GuardarDatos.size(); i++) {
+                        System.out.println("\nNombre: " + GuardarDatos.get(i).nombre);
+                        for (int j = 0; j < GuardarDatos.get(i).carton.length; j++) {
+                             System.out.print(GuardarDatos.get(i).carton[j] + " ");
                         }
                     }
                     System.out.println("\n");
@@ -76,7 +76,7 @@ public class Rifa {
         String nombreAuxiliar = ScannerString.nextLine();
 
         //        Rifa jugador = new Rifa(nombreAuxiliar);
-        baseDatos.add(new Rifa(nombreAuxiliar));
+        GuardarDatos.add(new Rifa(nombreAuxiliar));
     }
 
     public void GenerarPremiados() {
@@ -88,10 +88,10 @@ public class Rifa {
     //DUPLICACION DE CODIGO.
     public int ContarAciertos() {
         int cont = 0;
-        for (int i = 0; i < baseDatos.size(); i++) {
+        for (int i = 0; i < GuardarDatos.size(); i++) {
             for (int j = 0; j < cartonGanador.length; j++) {
                 for (int k = 0; k < 5; k++) {
-                    if (baseDatos.get(i).carton[k] == cartonGanador[j]) {
+                    if (GuardarDatos.get(i).carton[k] == cartonGanador[j]) {
                         cont++;
                     }
                 }
@@ -101,18 +101,18 @@ public class Rifa {
     }
 
     public void RepartirPremio(int totales) {
-        int cont = 0;
-        for (int i = 0; i < baseDatos.size(); i++) {
+        int cuenta = 0;
+        for (int i = 0; i < GuardarDatos.size(); i++) {
             for (int j = 0; j < cartonGanador.length; j++) {
                 for (int k = 0; k < 5; k++) {
-                    if (baseDatos.get(i).carton[k] == cartonGanador[j]) {
-                        cont++;
+                    if (GuardarDatos.get(i).carton[k] == cartonGanador[j]) {
+                        cuenta++;
                     }
                 }
             }
-            if (cont != 0) {
-                System.out.println("Ganador: " + baseDatos.get(i).nombre + " Premio: " + ((cont * (baseDatos.size() * 10)) / totales) + "€");
-                cont = 0;
+            if (cuenta != 0) {
+                System.out.println("Ganador: " + GuardarDatos.get(i).nombre + " Premio: " + ((cuenta * (GuardarDatos.size() * 10)) / totales) + "€");
+                cuenta = 0;
             }
         }
     }
