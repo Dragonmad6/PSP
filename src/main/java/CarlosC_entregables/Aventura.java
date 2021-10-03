@@ -255,23 +255,31 @@ public class Aventura {
         System.out.println(arana.nombre + " la " + arana.especie);
 
         System.out.println("\n El grupo de aventureros se dispone a luchar contra los bichos");
-        int objetivo = grupo.length - 1;
-        int enemigos = grupomobs.length - 1;
-        while (grupo[0].vida > 0 && grupomobs[0].vida > 0) {
+
+        int mobRecibePega = grupomobs.length - 1;
+        int perRecibe = 0;
+        while (grupo[perRecibe].vida > 0 && grupomobs[mobRecibePega].vida > 0) {
             for (int i = 0; i < grupo.length; i++) {
-                if (grupo[i].vida > 0) {
-                    Golpear(grupo[i], grupomobs[i]);
+                if (grupo[i].vida > 0 && grupomobs[mobRecibePega].vida > 0) {
+                    Golpear(grupo[i], grupomobs[mobRecibePega]);
 //                  Golpear(grupomobs[i], grupo[i]);
                 }
-                if (grupomobs[i].vida > 0) {
-                    Golpear(grupomobs[i], grupo[i]);
-                    objetivo--;
+                if (grupomobs[mobRecibePega].vida > 0 && grupo[perRecibe].vida > 0) {
+                    Golpear(grupomobs[mobRecibePega], grupo[perRecibe]);
                 }
-                if (grupo[i].vida > 0 && grupomobs[i].vida <= 0) {
+                if (grupo[perRecibe].vida > 0 && grupomobs[mobRecibePega].vida <= 0) {
                     System.out.println(grupo[i].nombre + " ha ganado la pelea.");
-                } else if(grupo[i].vida <= 0 && grupomobs[i].vida > 0){
-                    System.out.println(grupomobs[i].nombre + " ha ganado la pelea.");
-
+                    System.out.println(grupomobs[mobRecibePega].nombre + " HA MUERTO");
+                }
+                if (grupo[perRecibe].vida <= 0 && grupomobs[mobRecibePega].vida > 0) {
+                    System.out.println(grupomobs[mobRecibePega].nombre + " ha ganado la pelea.");
+                    System.out.println(grupo[perRecibe].nombre + " HA MUERTO");
+                }
+                if (grupomobs[mobRecibePega].vida <= 0 && mobRecibePega > 0) {
+                    mobRecibePega--;
+                }
+                if (grupo[perRecibe].vida <= 0 && perRecibe < 3) {
+                    perRecibe++;
                 }
             }
         }
@@ -299,6 +307,7 @@ public class Aventura {
         }
         if (finals.vida <= 0) {
             System.out.println("\nEl grupo ha ganado la pelea, ha derrotado a " + finals.nombre);
+            System.out.println("El grupo orgulloso levanta el martillo y desaparecen de aquel lugar magicamente...");
         } else {
             System.out.println("\n" + finals.nombre + " ha vencido al grupo. El martillo de la esperanza se desvanece.");
             System.out.println("Ya que no existia esperanza ni para " + finals.nombre + "ni para nuestros aventureros.");
