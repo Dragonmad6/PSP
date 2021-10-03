@@ -24,7 +24,7 @@ public class Aventura {
     Personaje cienpies = new Personaje("Cimpios", "cienpies", "dientes", 1, 2, 2, 2, 0, 2, 2, 2, 2, 2);
     Personaje gusano = new Personaje("Gusanito", "gusano", "Golpe Cuerpo", 1, 2, 1, 1, 0, 1, 1, 1, 1, 1);
     Personaje termita = new Personaje("Terminator", "termita", "pinzas", 3, 1, 2, 1, 1, 1, 3, 1, 1, 1);
-    Personaje arana = new Personaje("Terminator", "termita", "pinzas", 3, 1, 2, 1, 1, 1, 3, 1, 1, 1);
+    Personaje arana = new Personaje("Spider", "arana", "escupitajo", 2, 1, 2, 1, 1, 1, 2, 3, 1, 1);
 
     Personaje[] grupo = new Personaje[4];
     Personaje[] grupomobs = new Personaje[4];
@@ -252,6 +252,7 @@ public class Aventura {
         System.out.println(cienpies.nombre + " el " + cienpies.especie);
         System.out.println(gusano.nombre + " el " + gusano.especie);
         System.out.println(termita.nombre + " la " + termita.especie);
+        System.out.println(arana.nombre + " la " + arana.especie);
 
         System.out.println("\n El grupo de aventureros se dispone a luchar contra los bichos");
         int objetivo = grupo.length - 1;
@@ -260,13 +261,15 @@ public class Aventura {
             for (int i = 0; i < grupo.length; i++) {
                 if (grupo[i].vida > 0) {
                     Golpear(grupo[i], grupomobs[i]);
+//                  Golpear(grupomobs[i], grupo[i]);
                 }
                 if (grupomobs[i].vida > 0) {
-                    Golpear(grupomobs[objetivo], grupo[enemigos]);
+                    Golpear(grupomobs[i], grupo[i]);
+                    objetivo--;
                 }
                 if (grupo[i].vida > 0 && grupomobs[i].vida <= 0) {
                     System.out.println(grupo[i].nombre + " ha ganado la pelea.");
-                } else {
+                } else if(grupo[i].vida <= 0 && grupomobs[i].vida > 0){
                     System.out.println(grupomobs[i].nombre + " ha ganado la pelea.");
 
                 }

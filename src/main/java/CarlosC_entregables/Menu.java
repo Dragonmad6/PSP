@@ -27,13 +27,12 @@ public class Menu {
 //        }
 
         int opcion;
-
+        System.out.printf("Escribe un número del menú. \n");
         do {
             System.out.println(
                     "Pulsa:\n\t1. Juego de Rifa."
                     + "\n\t2. Juego de Aventura."
                     + "\n\t0. Salir.");
-            System.out.printf("Escribe un número del menú: ");
             opcion = ScannerInt.nextInt();
             switch (opcion) {
                 case 0:
@@ -45,7 +44,7 @@ public class Menu {
                     rifa.IniciarRifa();
                     break;
                 case 2:
-                    System.out.println("Has escogido la opción 2.");
+                    System.out.println("Has escogido la opción 2.\n");
                     aventura.IniciarAventura();
                     break;
                 default:
